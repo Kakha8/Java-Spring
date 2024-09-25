@@ -1,0 +1,7 @@
+Static Routing: 
+
+Static Routing is also known as non-adaptive routing which doesn’t change the routing table unless the network administrator changes or modifies them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing. 
+ 
+Dynamic Routing: 
+
+Dynamic routing is also known as adaptive routing which changes the routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to the router to ensure that changes then the routes are recalculated for sending updated routing information. 
