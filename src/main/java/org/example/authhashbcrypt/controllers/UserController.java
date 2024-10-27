@@ -33,7 +33,7 @@ public class UserController {
 
         if (session.getAttribute("user") != null) {
 
-
+            //ugghh
             return "welcome"; // Redirect to welcome page if user session exists
         }else return "login";
     }
