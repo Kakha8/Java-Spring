@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+<h2>Welcome, <span th:text="${username}"></span>!</h2>
+<p>Your password is: <span th:text="${password}"></span></p>
+<p>Users <span th:text="${user}"></span></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>username</th>
+        <th>email/th>
+        <th>password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through the list of products -->
+    <tr th:each="user: ${retrivedUsers}">
+        <td th:text="${user.userName}"></td> <!-- Displaying index (1-based) -->
+        <td th:text="${user.email}"></td> <!-- Displaying product name -->
+        <td th:text="${user.passWord}"></td> <!-- Displaying product price -->
+    </tr>
+    </tbody>
+</table>
+
+<!-- Logout link (GET request) -->
+<a href="/logout">Logout</a>
+
+</body>
+</html>
