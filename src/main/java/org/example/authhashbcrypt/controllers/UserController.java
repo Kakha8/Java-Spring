@@ -33,6 +33,12 @@ public class UserController {
 
         if (session.getAttribute("user") != null) {
 
+            List<User> retrivedUsers = listUsers();
+
+
+            model.addAttribute("retrivedUsers", retrivedUsers);
+            // Pass only the username to the welcome page
+            model.addAttribute("username", session.getAttribute("user").toString());
             //ugghh
             return "welcome"; // Redirect to welcome page if user session exists
         }else return "login";
@@ -55,11 +61,12 @@ public class UserController {
             boolean verifyPassword = HashPassword.verifyPassword(password, hashedPassword);
 
             if(verifyPassword){
+
+
                 // Store the user in the session
                 session.setAttribute("user", username); // Storing the authenticated user
 
                 List<User> retrivedUsers = listUsers();
-                model.addAttribute("user", listUsers().get(0).getUserName());
 
 
                 model.addAttribute("retrivedUsers", retrivedUsers);
@@ -93,7 +100,7 @@ public class UserController {
                                   @RequestParam String email,
                                   @RequestParam String password,
                                   @RequestParam String retype,
-                                  Model model){
+                                  Model model, HttpSession session){
 
 
         boolean match = registerRepo.passwordsMatch(password, retype);
@@ -109,7 +116,10 @@ public class UserController {
 
             System.out.println("Hashed password: " + hashedPassword);
             System.out.println("Salt: " + salt);
-            return "login";
+
+            session.setAttribute("user", username);
+
+            return "redirect:/login";
         } else model.addAttribute("failed", "passwords don't match!");
 
         return null;
