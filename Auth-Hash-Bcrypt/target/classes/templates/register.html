@@ -1,26 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <title>Register</title>
+    <style>
+        /* Reset basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background and container styling */
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* Input fields and button styling */
+        label {
+            display: block;
+            margin: 0.5rem 0 0.3rem;
+            font-size: 0.9rem;
+            color: #555;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-<h2>Register Page</h2>
-<form th:action="@{/register}" method="post">
-    <label for="Username">Username:</label>
-    <input type="text" id="username" name="username" required><br>
+<div class="register-container">
+    <h2>Register Page</h2>
+    <form th:action="@{/register}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
-    <label for="Email">Email:</label>
-    <input type="text" id="email" name="email" required><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
 
-    <label for="Password">Password:</label>
-    <input type="password" id="password" name="password" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-    <label for="Retype">Retype:</label>
-    <input type="password" id="retype" name="retype" required><br>
+        <label for="retype">Retype Password:</label>
+        <input type="password" id="retype" name="retype" required>
 
+        <span th:text="${failed}" class="error-message"></span>
 
-    <span th:text="${failed}"></span>
-    <button type="submit">Login</button>
-</form>
+        <button type="submit">Register</button>
+    </form>
+</div>
 </body>
 </html>
